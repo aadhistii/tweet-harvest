@@ -292,8 +292,8 @@ export async function crawl({
           const rows = comingTweets.map((current: (typeof tweetContents)[0]) => {
             const tweet = pick(current.tweet, FILTERED_FIELDS);
 
-            const charsToReplace = ["\n", ",", '"', "⁦", "⁩", "’", "‘", "“", "”", "…", "—", "–", "•"];
-            let cleanTweetText = tweet.full_text.replace(new RegExp(charsToReplace.join("|"), "g"), " ");
+            // const charsToReplace = ["\n", ",", '"', "⁦", "⁩", "’", "‘", "“", "”", "…", "—", "–", "•"];
+            let cleanTweetText = tweet.full_text
 
             // replace all emojis
             // Emoji regex pattern
