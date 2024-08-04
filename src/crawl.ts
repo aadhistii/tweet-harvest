@@ -293,7 +293,15 @@ export async function crawl({
             const tweet = pick(current.tweet, FILTERED_FIELDS);
 
             // const charsToReplace = ["\n", ",", '"', "⁦", "⁩", "’", "‘", "“", "”", "…", "—", "–", "•"];
-            let cleanTweetText = tweet.full_text
+            // let cleanTweetText = tweet.full_text.replace(new RegExp(charsToReplace.join("|"), "g"), " ");
+            
+            const charsToReplace = ["\n", "⁦", "⁩", "’", "‘", "“", "”", "•"];
+
+            // replace /n with .
+            let cleanTweetText = tweet.full_text.replace(new RegExp(charsToReplace[0], "g"), ". ");
+            
+            // replace other charsToReplace with space
+            cleanTweetText = cleanTweetText.replace(new RegExp(charsToReplace.slice(1).join("|"), "g"), " ");
 
             // replace all emojis
             // Emoji regex pattern
